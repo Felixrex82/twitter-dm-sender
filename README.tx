@@ -1,0 +1,82 @@
+TWITTER DM SENDER - SETUP & USAGE INSTRUCTIONS
+===============================================
+
+REQUIREMENTS:
+-------------
+- Python 3.7 or higher
+- Twitter API credentials with Elevated access (required for sending DMs)
+- tweepy library
+
+INSTALLATION:
+-------------
+1. Install Python from https://python.org/downloads/
+2. Open Command Prompt (Windows) or Terminal (Mac/Linux)
+3. Run this command:
+   pip install tweepy
+
+SETUP:
+------
+1. Get your Twitter API credentials:
+   - Go to https://developer.twitter.com
+   - Sign in with your Twitter account
+   - Create a new App/Project
+   - Generate API credentials (you need all 4):
+     * API Key
+     * API Secret Key
+     * Access Token
+     * Access Token Secret
+
+2. Edit the send_dms.py file:
+   - Open it in a text editor
+   - Find lines 106-109
+   - Replace the placeholder text with your actual credentials:
+     
+     API_KEY = "put_your_api_key_here"
+     API_SECRET = "put_your_api_secret_here"
+     ACCESS_TOKEN = "put_your_access_token_here"
+     ACCESS_TOKEN_SECRET = "put_your_access_token_secret_here"
+
+3. Create your recipient list:
+   - Edit recipients.csv file
+   - Format: username,name
+   - Example:
+     username,name
+     elonmusk,Elon
+     jack,Jack
+     sama,Sam
+
+4. Customize your message:
+   - In send_dms.py, find the message_template (around line 113)
+   - Edit the message text
+   - You can use {username} and {name} as placeholders
+
+USAGE:
+------
+1. Open Command Prompt/Terminal
+2. Navigate to the project folder:
+   cd path/to/twitter_dm_project
+3. Run the script:
+   python send_dms.py
+
+RATE LIMITING:
+--------------
+The script includes built-in rate limiting to avoid getting banned:
+- 60-120 seconds delay between each DM (randomized)
+- After every 10 DMs, waits 5 minutes
+- You can adjust these settings in send_dms.py (lines 125-128)
+
+IMPORTANT NOTES:
+----------------
+- Twitter has a limit of ~1,000 DMs per day
+- Sending too many too fast will trigger spam filters
+- Always test with 2-3 users first before running the full list
+- Keep your API credentials secure and never share them
+
+TROUBLESHOOTING:
+----------------
+- "Authentication failed" = Check your API credentials
+- "403 Forbidden" = You need Elevated API access for DMs
+- "User not found" = Check the username spelling
+- Rate limit errors = The script will automatically wait and retry
+
+For questions or issues, contact [your email or contact info]
